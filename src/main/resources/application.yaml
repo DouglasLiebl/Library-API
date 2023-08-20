@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: library-api
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          lab:
+            non_contextual_creation: true
+    generate-ddl: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Library-API
+    username: postgres
+    password: root
