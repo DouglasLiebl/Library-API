@@ -11,9 +11,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiErrors> handleValidationException(MethodArgumentNotValidException e) {
+    public ResponseEntity<ErrorDetails> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         BindingResult bindingResult = e.getBindingResult();
-        ApiErrors response = new ApiErrors(bindingResult);
+        ErrorDetails response = new ErrorDetails(bindingResult);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ErrorDetails> handleBusinessException(BusinessException e) {
+        ErrorDetails response = new ErrorDetails(e);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 

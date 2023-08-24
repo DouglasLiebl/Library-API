@@ -2,9 +2,9 @@ package io.github.douglasliebl.libraryapi.api.resource;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.douglasliebl.libraryapi.api.dto.BookDTO;
+import io.github.douglasliebl.libraryapi.api.exception.BusinessException;
 import io.github.douglasliebl.libraryapi.api.model.entity.Book;
 import io.github.douglasliebl.libraryapi.api.service.BookService;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,7 +45,7 @@ public class BookControllerTest {
     @DisplayName("Must create a book with success.")
     public void createBookTest() throws Exception {
 
-        BookDTO bookDTO = BookDTO.builder().author("Author").title("My Book").isbn("123456").build();
+        BookDTO bookDTO = createNewBook();
         Book savedBook = Book.builder().id(1L).author("Author").title("My Book").isbn("123456").build();
 
         BDDMockito.given(bookService.save(Mockito.any(Book.class)))
@@ -82,4 +82,31 @@ public class BookControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("errors", hasSize(3)));
     }
+
+    @Test
+    @DisplayName("Should throw an Exception when trying to register an already used isbsn")
+    public void createBookWithDuplicatedIsbn() throws Exception {
+
+        BookDTO bookDTO = createNewBook();
+        String json = new ObjectMapper().writeValueAsString(bookDTO);
+
+        BDDMockito.given(bookService.save(Mockito.any(Book.class)))
+                .willThrow(new BusinessException("Isbn already exists."));
+
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .post(BOOK_API)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(json);
+
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("errors", hasSize(1)))
+                .andExpect(jsonPath("errors[0]").value("Isbn already exists."));
+    }
+
+    private static BookDTO createNewBook() {
+        return BookDTO.builder().author("Author").title("My Book").isbn("123456").build();
+    }
+
 }
