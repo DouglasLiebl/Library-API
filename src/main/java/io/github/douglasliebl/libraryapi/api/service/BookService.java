@@ -7,7 +7,7 @@ import io.github.douglasliebl.libraryapi.api.model.entity.Book;
 import java.util.Optional;
 
 public interface BookService {
-    Book save(Book any);
+    Book save(Book request);
 
     Optional<Book> getById(Long id);
 

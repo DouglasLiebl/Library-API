@@ -7,10 +7,7 @@ import io.github.douglasliebl.libraryapi.api.model.entity.Book;
 import io.github.douglasliebl.libraryapi.api.model.repository.BookRepository;
 import io.github.douglasliebl.libraryapi.api.service.BookService;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -19,7 +16,6 @@ import java.util.Optional;
 public class BookServiceImpl implements BookService {
 
     private BookRepository repository;
-    private ModelMapper mapper;
 
     public BookServiceImpl(BookRepository repository) {
         this.repository = repository;
@@ -40,14 +36,26 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void delete(Book book) {
+        if (book == null || book.getId() == null) {
+            throw new IllegalArgumentException("Book id cannot be null");
+        }
         repository.delete(book);
     }
 
     @Override
     public BookDTO update(Book actualBook, BookUpdateDTO request) {
+        if (request == null || actualBook.getId() == null) {
+            throw new IllegalArgumentException("Update information or actual book id cannot be null");
+        }
+
         actualBook.setTitle(request.getTitle());
         actualBook.setAuthor(request.getAuthor());
+        Book updatedBook = repository.save(actualBook);
 
-        return mapper.map(repository.save(actualBook), BookDTO.class);
+        return BookDTO.builder()
+                .id(updatedBook.getId())
+                .title(updatedBook.getTitle())
+                .author(updatedBook.getAuthor())
+                .isbn(updatedBook.getIsbn()).build();
     }
 }
