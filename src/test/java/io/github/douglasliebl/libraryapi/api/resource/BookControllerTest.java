@@ -84,7 +84,7 @@ public class BookControllerTest {
     }
 
     @Test
-    @DisplayName("Should throw an Exception when trying to register an already used isbsn")
+    @DisplayName("Should throw an Exception when trying to register an already used isbn")
     public void createBookWithDuplicatedIsbn() throws Exception {
 
         BookDTO bookDTO = createNewBook();

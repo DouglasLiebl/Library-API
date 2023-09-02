@@ -1,9 +1,10 @@
 package io.github.douglasliebl.libraryapi.api.service;
 
+import io.github.douglasliebl.libraryapi.api.exception.BusinessException;
 import io.github.douglasliebl.libraryapi.api.model.entity.Book;
 import io.github.douglasliebl.libraryapi.api.model.repository.BookRepository;
 import io.github.douglasliebl.libraryapi.api.service.impl.BookServiceImpl;
-import lombok.RequiredArgsConstructor;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,15 +24,18 @@ class BookServiceTest {
 
     @MockBean
     BookRepository repository;
+
     @BeforeEach
     public void setUp() {
         this.service = new BookServiceImpl(repository);
     }
+
     @Test
     @DisplayName("Must save a book")
     public void saveBookTest() {
 
-        Book book = Book.builder().title("My Book").author("Author").isbn("123456").build();
+        Book book = createValidBook();
+        Mockito.when(repository.existsByIsbn(Mockito.anyString())).thenReturn(false);
         Mockito.when(repository.save(book))
                 .thenReturn(
                         Book.builder()
@@ -48,5 +52,23 @@ class BookServiceTest {
         assertThat(savedBook.getAuthor()).isEqualTo("Author");
     }
 
+    @Test
+    @DisplayName("Should throw an Exception when trying to register an already used isbn")
+    public void shouldNotSaveBookWithDuplicatedISBN() {
 
+        Book book = createValidBook();
+        Mockito.when(repository.existsByIsbn(Mockito.anyString())).thenReturn(true);
+
+        Throwable exception = Assertions.catchThrowable(() -> service.save(book));
+
+        assertThat(exception)
+                .isInstanceOf(BusinessException.class)
+                .hasMessage("Isbn already exists.");
+
+        Mockito.verify(repository, Mockito.never()).save(book);
+    }
+
+    private static Book createValidBook() {
+        return Book.builder().title("My Book").author("Author").isbn("123456").build();
+    }
 }

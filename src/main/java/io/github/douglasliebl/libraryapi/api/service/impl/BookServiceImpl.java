@@ -1,5 +1,6 @@
 package io.github.douglasliebl.libraryapi.api.service.impl;
 
+import io.github.douglasliebl.libraryapi.api.exception.BusinessException;
 import io.github.douglasliebl.libraryapi.api.model.entity.Book;
 import io.github.douglasliebl.libraryapi.api.model.repository.BookRepository;
 import io.github.douglasliebl.libraryapi.api.service.BookService;
@@ -18,6 +19,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book save(Book request) {
+        if (repository.existsByIsbn(request.getIsbn())) {
+            throw new BusinessException("Isbn already exists.");
+        }
         return repository.save(request);
     }
 }
