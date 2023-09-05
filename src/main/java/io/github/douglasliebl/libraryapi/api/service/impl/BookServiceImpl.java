@@ -7,6 +7,7 @@ import io.github.douglasliebl.libraryapi.api.model.entity.Book;
 import io.github.douglasliebl.libraryapi.api.model.repository.BookRepository;
 import io.github.douglasliebl.libraryapi.api.service.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -58,4 +59,17 @@ public class BookServiceImpl implements BookService {
                 .author(updatedBook.getAuthor())
                 .isbn(updatedBook.getIsbn()).build();
     }
+
+    @Override
+    public Page<Book> find(Book filter, Pageable pageInfo) {
+        Example<Book> example = Example.of(filter,
+                ExampleMatcher
+                        .matching()
+                        .withIgnoreCase()
+                        .withIgnoreNullValues()
+                        .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING));
+
+        return repository.findAll(example, pageInfo);
+    }
+
 }

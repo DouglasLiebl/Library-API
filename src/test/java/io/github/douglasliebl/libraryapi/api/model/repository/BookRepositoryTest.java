@@ -4,6 +4,7 @@ import io.github.douglasliebl.libraryapi.api.model.entity.Book;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -66,6 +67,35 @@ class BookRepositoryTest {
 
         // then
         assertThat(foundBook.isPresent()).isTrue();
+    }
+
+    @Test
+    @DisplayName("Should save a book")
+    public void saveBookTest() {
+        // given
+        Book book = createNewBook("123");
+
+        // when
+        Book savedBook = repository.save(book);
+
+        // then
+        assertThat(savedBook.getId()).isNotNull();
+    }
+
+    @Test
+    @DisplayName("Should delete a book")
+    public void deleteBookTest() {
+        // given
+        Book book = createNewBook("123");
+        entityManager.persist(book);
+
+        // when
+        Book foundBook = entityManager.find(Book.class, book.getId());
+        repository.delete(foundBook);
+
+        // then
+        Book deletedBook = entityManager.find(Book.class, foundBook.getId());
+        assertThat(deletedBook).isNull();
     }
 
 
