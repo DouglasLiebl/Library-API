@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ms-books
+    name: ms-customers
 
   jpa:
     database: postgresql
@@ -20,4 +20,4 @@ spring:
     password: root
 
 server:
-  port: 8085
+  port: 8086

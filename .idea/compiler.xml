@@ -7,13 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="library-api" />
+        <module name="ms-books" />
+        <module name="ms-customers" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="library-api" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="library-api" options="-parameters" />
+      <module name="ms-books" options="-parameters" />
+      <module name="ms-customers" options="-parameters" />
     </option>
   </component>
 </project>

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.github.douglasliebl</groupId>
-	<artifactId>ms-books</artifactId>
+	<artifactId>ms-customers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ms-books</name>
-	<description>Book Management Service</description>
+	<name>ms-customers</name>
+	<description>Customer Registration Service</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
