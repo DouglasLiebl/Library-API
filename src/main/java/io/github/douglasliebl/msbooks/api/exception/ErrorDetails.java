@@ -2,6 +2,7 @@ package io.github.douglasliebl.msbooks.api.exception;
 
 import lombok.Getter;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,5 +21,9 @@ public class ErrorDetails {
 
     public ErrorDetails(BusinessException e) {
         this.errors = Collections.singletonList(e.getMessage());
+    }
+
+    public ErrorDetails(ResponseStatusException e) {
+        this.errors = Collections.singletonList(e.getReason());
     }
 }

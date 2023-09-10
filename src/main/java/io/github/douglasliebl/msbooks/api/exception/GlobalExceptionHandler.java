@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.server.ResponseStatusException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -19,6 +20,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorDetails> handleBusinessException(BusinessException e) {
+        ErrorDetails response = new ErrorDetails(e);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<ErrorDetails> handleResponseStatusException(ResponseStatusException e) {
         ErrorDetails response = new ErrorDetails(e);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
