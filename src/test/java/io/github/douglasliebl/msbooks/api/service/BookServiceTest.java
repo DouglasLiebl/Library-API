@@ -201,6 +201,27 @@ class BookServiceTest {
 
     }
 
+    @Test
+    @DisplayName("Should get a book by ISBN")
+    public void getBookByIsbnTest() {
+        // given
+        String isbn = "123";
+
+        // when
+        Mockito.when(repository.findByIsbn(isbn))
+                .thenReturn(Optional.of(Book.builder().id(1L).isbn(isbn).build()));
+
+        Optional<Book> book = service.getBookByIsbn(isbn);
+
+        // then
+        assertThat(book.isPresent()).isTrue();
+        assertThat(book.get().getId()).isEqualTo(1L);
+        assertThat(book.get().getIsbn()).isEqualTo(isbn);
+
+        Mockito.verify(repository, Mockito.times(1)).findByIsbn(isbn);
+
+    }
+
     private static Book createValidBook() {
         return Book.builder().title("My Book").author("Author").isbn("123456").build();
     }
