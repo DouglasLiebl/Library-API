@@ -87,9 +87,10 @@ class BookServiceTest {
         Long id = 11L;
         Book book = createValidBook();
         book.setId(id);
-        Mockito.when(repository.findById(id)).thenReturn(Optional.of(book));
+
 
         // when
+        Mockito.when(repository.findById(id)).thenReturn(Optional.of(book));
         Optional<Book> foundBook = service.getById(id);
 
         // then
@@ -127,8 +128,8 @@ class BookServiceTest {
     }
 
     @Test
-    @DisplayName("Should throw a exception when delete a inexistent book")
-    public void deleteInexistentBookTest() {
+    @DisplayName("Should throw a exception when trying to delete a not registered book")
+    public void deleteNotRegisteredBookTest() {
         // given
         Book book = new Book();
 
