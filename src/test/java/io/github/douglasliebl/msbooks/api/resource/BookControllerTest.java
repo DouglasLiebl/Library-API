@@ -178,7 +178,7 @@ class BookControllerTest {
 
     @Test
     @DisplayName("Should throw resource not found when not found the book to delete")
-    public void deleteInexistentBookTest() throws Exception {
+    public void deleteNotRegisteredBookTest() throws Exception {
         // given
         BDDMockito.given(bookService.getById(Mockito.anyLong()))
                 .willReturn(Optional.empty());
@@ -236,7 +236,7 @@ class BookControllerTest {
 
     @Test
     @DisplayName("Should return not found when not found the book to update")
-    public void updateInexistentBookTest() throws Exception {
+    public void updateNotRegisteredBookTest() throws Exception {
         // given
         String json = new ObjectMapper().writeValueAsString(createNewBook());
         BDDMockito.given(bookService.getById(Mockito.anyLong()))

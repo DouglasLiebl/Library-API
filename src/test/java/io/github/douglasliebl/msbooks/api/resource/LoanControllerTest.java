@@ -3,6 +3,7 @@ package io.github.douglasliebl.msbooks.api.resource;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.douglasliebl.msbooks.api.dto.LoanDTO;
+import io.github.douglasliebl.msbooks.api.dto.ReturnedLoanDTO;
 import io.github.douglasliebl.msbooks.api.exception.BusinessException;
 import io.github.douglasliebl.msbooks.api.model.entity.Book;
 import io.github.douglasliebl.msbooks.api.model.entity.Loan;
@@ -123,5 +124,29 @@ public class LoanControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("errors", Matchers.hasSize(1)))
                 .andExpect(jsonPath("errors[0]").value("Book already loaned."));
+    }
+
+    @Test
+    @DisplayName("Should return a book")
+    public void returnBookTest() throws Exception {
+        // given
+        ReturnedLoanDTO dto = ReturnedLoanDTO.builder().returned(true).build();
+        String json = new ObjectMapper().writeValueAsString(dto);
+
+        BDDMockito.given(loanService.getById(Mockito.anyLong()))
+                .willReturn(Optional.of(Loan.builder().id(1L).build()));
+
+        // when
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .patch(LOAN_API.concat("/1"))
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json);
+
+        // then
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk());
+
+        Mockito.verify(loanService, Mockito.times(1)).update(Loan.builder().id(1L).build());
     }
 }

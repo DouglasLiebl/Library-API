@@ -1,5 +1,6 @@
 package io.github.douglasliebl.msbooks.api.service;
 
+import io.github.douglasliebl.msbooks.api.exception.BusinessException;
 import io.github.douglasliebl.msbooks.api.model.entity.Book;
 import io.github.douglasliebl.msbooks.api.model.entity.Loan;
 import io.github.douglasliebl.msbooks.api.model.repository.LoanRepository;
@@ -16,7 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
@@ -53,6 +54,8 @@ class LoanServiceTest {
                 .build();
 
         // when
+        Mockito.when(repository.existsByBookAndReturnedIsFalseOrReturnedIsNull(book))
+                .thenReturn(false);
         Mockito.when(repository.save(savingLoan))
                 .thenReturn(savedLoan);
 
@@ -64,6 +67,30 @@ class LoanServiceTest {
         assertThat(loan.getCustomer()).isEqualTo(savedLoan.getCustomer());
         assertThat(loan.getLoanDate()).isEqualTo(savedLoan.getLoanDate());
 
+    }
+
+    @Test
+    @DisplayName("Should throw an exception when book already loaned")
+    public void loanedBookTest() {
+        // given
+        Book book = Book.builder().id(1L).build();
+        Loan savingLoan = Loan.builder()
+                .book(book)
+                .customer("Customer")
+                .loanDate(LocalDate.now())
+                .build();
+
+        // when
+        Mockito.when(repository.existsByBookAndReturnedIsFalseOrReturnedIsNull(book))
+                .thenReturn(true);
+        Throwable exception = catchThrowable(() -> service.save(savingLoan));
+
+        // then
+        assertThat(exception)
+                .isInstanceOf(BusinessException.class)
+                .hasMessage("Book already loaned.");
+
+        Mockito.verify(repository, Mockito.never()).save(savingLoan);
     }
 
 }
