@@ -1,16 +1,14 @@
 package io.github.douglasliebl.msbooks.api.service.impl;
 
-import io.github.douglasliebl.msbooks.api.dto.LoanDTO;
+import io.github.douglasliebl.msbooks.api.dto.LoanFilterDTO;
 import io.github.douglasliebl.msbooks.api.exception.BusinessException;
-import io.github.douglasliebl.msbooks.api.model.entity.Book;
 import io.github.douglasliebl.msbooks.api.model.entity.Loan;
 import io.github.douglasliebl.msbooks.api.model.repository.LoanRepository;
-import io.github.douglasliebl.msbooks.api.service.BookService;
 import io.github.douglasliebl.msbooks.api.service.LoanService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -29,13 +27,16 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public Optional<Loan> getById(Long id) {
-        return Optional.empty();
+        return repository.findById(id);
     }
 
     @Override
     public Loan update(Loan response) {
-        return null;
+        return repository.save(response);
     }
 
-
+    @Override
+    public Page<Loan> find(LoanFilterDTO filter, Pageable pageable) {
+        return repository.findByBookIsbnOrCustomer(filter.getIsbn(), filter.getCustomer(), pageable);
+    }
 }

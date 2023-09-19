@@ -3,6 +3,7 @@ package io.github.douglasliebl.msbooks.api.resource;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.douglasliebl.msbooks.api.dto.LoanDTO;
+import io.github.douglasliebl.msbooks.api.dto.LoanFilterDTO;
 import io.github.douglasliebl.msbooks.api.dto.ReturnedLoanDTO;
 import io.github.douglasliebl.msbooks.api.exception.BusinessException;
 import io.github.douglasliebl.msbooks.api.model.entity.Book;
@@ -19,6 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -27,6 +31,8 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Optional;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -148,5 +154,61 @@ public class LoanControllerTest {
                 .andExpect(status().isOk());
 
         Mockito.verify(loanService, Mockito.times(1)).update(Loan.builder().id(1L).build());
+    }
+
+    @Test
+    @DisplayName("Should throw an Exception when try to return a not loaned book")
+    public void returnNotLoanedBook() throws Exception {
+        // given
+        ReturnedLoanDTO dto = ReturnedLoanDTO.builder().returned(true).build();
+        String json = new ObjectMapper().writeValueAsString(dto);
+
+        BDDMockito.given(loanService.getById(Mockito.anyLong()))
+                .willReturn(Optional.empty());
+
+        // when
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .patch(LOAN_API.concat("/1"))
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json);
+
+        // then
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isNotFound());
+
+    }
+
+    @Test
+    @DisplayName("Should filter loans")
+    public void findLoansTest() throws Exception {
+        // given
+        Book book = Book.builder().id(1L).isbn("123").build();
+        Loan loan =  Loan.builder()
+                .id(1L)
+                .book(book)
+                .customer("Customer")
+                .loanDate(LocalDate.now())
+                .returned(true)
+                .build();
+
+        BDDMockito.given(loanService.find(Mockito.any(LoanFilterDTO.class), Mockito.any(Pageable.class)))
+                .willReturn(new PageImpl<Loan>(Collections.singletonList(loan), PageRequest.of(0, 10), 1));
+
+        String query = String.format("?isbn=%s&customer=%s&page=0&size=10",
+                loan.getBook().getIsbn(), loan.getCustomer());
+
+        // when
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get(LOAN_API.concat(query))
+                .accept(MediaType.APPLICATION_JSON);
+
+        // then
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("content", Matchers.hasSize(1)))
+                .andExpect(jsonPath("totalElements").value(1))
+                .andExpect(jsonPath("pageable.pageSize").value(10))
+                .andExpect(jsonPath("pageable.pageNumber").value(0));
     }
 }
