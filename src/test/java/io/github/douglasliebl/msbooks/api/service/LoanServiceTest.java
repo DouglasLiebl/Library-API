@@ -10,16 +10,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.BDDMockito;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -186,6 +186,34 @@ class LoanServiceTest {
         assertThat(result.getContent()).isEqualTo(list);
         assertThat(result.getPageable().getPageSize()).isEqualTo(10);
         assertThat(result.getPageable().getPageNumber()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("Should find loans by book")
+    public void findLoansByBookTest() {
+        // given
+        Book book = Book.builder().id(1L).build();
+        Loan loan = Loan.builder()
+                .id(1L)
+                .book(book)
+                .customer("Customer")
+                .loanDate(LocalDate.now())
+                .returned(true)
+                .build();
+
+        Pageable pageable = PageRequest.of(0, 10);
+
+        // when
+        Mockito.when(repository.findByBook(book, pageable))
+                .thenReturn(new PageImpl<>(Collections.singletonList(loan), pageable, 1));
+
+        Page<Loan> result = service.getLoansByBook(book, pageable);
+
+        // then
+        assertThat(result.getTotalElements()).isEqualTo(1);
+        assertThat(result.getContent()).isEqualTo(Collections.singletonList(loan));
+        assertThat(result.getPageable().getPageNumber()).isEqualTo(0);
+        assertThat(result.getPageable().getPageSize()).isEqualTo(10);
     }
 
 }

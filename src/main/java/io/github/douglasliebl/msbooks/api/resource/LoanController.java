@@ -37,6 +37,7 @@ public class LoanController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book not found for passed isbn"));
         Loan loan = Loan.builder()
                 .customer(request.getCustomer())
+                .email(request.getEmail())
                 .book(book)
                 .loanDate(LocalDate.now())
                 .build();

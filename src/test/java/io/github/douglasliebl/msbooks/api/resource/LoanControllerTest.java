@@ -1,6 +1,5 @@
 package io.github.douglasliebl.msbooks.api.resource;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.douglasliebl.msbooks.api.dto.LoanDTO;
 import io.github.douglasliebl.msbooks.api.dto.LoanFilterDTO;
@@ -31,11 +30,11 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
@@ -58,11 +57,18 @@ public class LoanControllerTest {
     @DisplayName("Should make a loan")
     public void createLoanTest() throws Exception {
         // given
-        LoanDTO dto = LoanDTO.builder().isbn("123").customer("Customer").build();
+        LoanDTO dto = LoanDTO.builder()
+                .isbn("123")
+                .customer("Customer").build();
         String json = new ObjectMapper().writeValueAsString(dto);
 
-        Book book = Book.builder().id(11L).isbn("123").build();
-        Loan loan = Loan.builder().id(1L).customer("Customer").book(book).loanDate(LocalDate.now()).build();
+        Book book = Book.builder().id(11L)
+                .isbn("123").build();
+        Loan loan = Loan.builder().id(1L)
+                .customer("Customer")
+                .email("customer@gmail.com")
+                .book(book)
+                .loanDate(LocalDate.now()).build();
 
         BDDMockito.given(bookService.getBookByIsbn("123"))
                 .willReturn(Optional.of(
@@ -86,7 +92,9 @@ public class LoanControllerTest {
     @DisplayName("Should throw an error when try create a loan with a invalid book")
     public void invalidIsbnCreateLoanTest() throws Exception {
         // given
-        LoanDTO dto = LoanDTO.builder().isbn("123").customer("Customer").build();
+        LoanDTO dto = LoanDTO.builder()
+                .isbn("123")
+                .customer("Customer").build();
         String json = new ObjectMapper().writeValueAsString(dto);
 
         BDDMockito.given(bookService.getBookByIsbn("123"))
@@ -109,10 +117,13 @@ public class LoanControllerTest {
     @DisplayName("Should throw an error when try create a loan with a already loaned book")
     public void loanedBookErrorOnCreateLoanTest() throws Exception {
         // given
-        LoanDTO dto = LoanDTO.builder().isbn("123").customer("Customer").build();
+        LoanDTO dto = LoanDTO.builder()
+                .isbn("123")
+                .customer("Customer").build();
         String json = new ObjectMapper().writeValueAsString(dto);
 
-        Book book = Book.builder().id(11L).isbn("123").build();
+        Book book = Book.builder().id(11L)
+                .isbn("123").build();
         BDDMockito.given(bookService.getBookByIsbn("123"))
                 .willReturn(Optional.of(book));
 

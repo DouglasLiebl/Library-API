@@ -5,7 +5,9 @@ import io.github.douglasliebl.msbooks.api.dto.BookDTO;
 import io.github.douglasliebl.msbooks.api.dto.BookUpdateDTO;
 import io.github.douglasliebl.msbooks.api.exception.BusinessException;
 import io.github.douglasliebl.msbooks.api.model.entity.Book;
+import io.github.douglasliebl.msbooks.api.model.entity.Loan;
 import io.github.douglasliebl.msbooks.api.service.BookService;
+import io.github.douglasliebl.msbooks.api.service.LoanService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,6 +48,9 @@ class BookControllerTest {
 
     @MockBean
     BookService bookService;
+
+    @MockBean
+    LoanService loanService;
 
 
     @Test
@@ -284,6 +289,73 @@ class BookControllerTest {
                 .andExpect(jsonPath("pageable.pageSize").value(100))
                 .andExpect(jsonPath("pageable.pageNumber").value(0));
 
+    }
+
+    @Test
+    @DisplayName("Should get loans by book")
+    public void getLoansByBookTest() throws Exception {
+        // given
+        Long id = 11L;
+        Book book = Book.builder().id(id)
+                .title(createNewBook().getTitle())
+                .author(createNewBook().getAuthor())
+                .isbn(createNewBook().getIsbn())
+                .build();
+
+        Loan loan = Loan.builder()
+                .id(id)
+                .book(book)
+                .returned(true)
+                .customer("Customer")
+                .build();
+
+        BDDMockito.given(bookService.getById(id))
+                .willReturn(Optional.of(book));
+
+        BDDMockito.given(loanService.getLoansByBook(Mockito.any(Book.class), Mockito.any(Pageable.class)))
+                .willReturn(new PageImpl<Loan>(Collections.singletonList(loan), PageRequest.of(0, 10), 1));
+
+        String queryString = "?page=0&size=10";
+
+        // when
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get(BOOK_API.concat("/11/loans" + queryString))
+                .accept(MediaType.APPLICATION_JSON);
+
+        // then
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("content", Matchers.hasSize(1)))
+                .andExpect(jsonPath("totalElements").value(1))
+                .andExpect(jsonPath("pageable.pageSize").value(10))
+                .andExpect(jsonPath("pageable.pageNumber").value(0));
+    }
+
+    @Test
+    @DisplayName("Should throw an Exception when book who searched not are registered")
+    public void getLoansByNotRegisteredBookTest() throws Exception {
+        // given
+        Book book = Book.builder().id(1L).build();
+        Loan loan = Loan.builder()
+                .id(1L)
+                .book(book)
+                .returned(true)
+                .customer("Customer")
+                .build();
+
+        BDDMockito.given(bookService.getById(loan.getBook().getId()))
+                .willReturn(Optional.empty());
+
+        String queryString = "?page=0&size=10";
+
+        // when
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get(BOOK_API.concat("/1/loans" + queryString))
+                .accept(MediaType.APPLICATION_JSON);
+
+        // then
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isNotFound());
     }
 
     private static BookDTO createNewBook() {
