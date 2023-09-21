@@ -18,3 +18,24 @@ spring:
     url: jdbc:postgresql://localhost:5432/Library-API
     username: postgres
     password: root
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password:
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+
+app:
+  mail:
+    late-loans:
+      message: Attention! You have a book overdue. Please return it as soon as possible or request a new loan.
+    default-mailSender: tt893603@gmail.com

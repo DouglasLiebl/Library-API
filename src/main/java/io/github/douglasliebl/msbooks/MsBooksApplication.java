@@ -1,24 +1,37 @@
 package io.github.douglasliebl.msbooks;
 
+import io.github.douglasliebl.msbooks.api.service.EmailService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import java.util.Arrays;
+import java.util.List;
+
 @SpringBootApplication
 @EnableScheduling
 public class MsBooksApplication {
+
+	@Autowired
+	private EmailService emailService;
 
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
 
-	@Scheduled(cron = "0 19 11 1/1 * ?")
-	public void teste() {
-		System.out.println("Teste");
+	@Bean
+	public CommandLineRunner runner() {
+		return args -> {
+			List<String> mail = List.of("douglasliebl@outlook.com");
+			emailService.sendMail("Testing", mail);
+			System.out.println("SUCCESSFULLY SEND");
+		};
 	}
 
 	public static void main(String[] args) {
