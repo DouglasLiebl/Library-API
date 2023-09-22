@@ -17,20 +17,9 @@ import java.util.List;
 @EnableScheduling
 public class MsBooksApplication {
 
-	@Autowired
-	private EmailService emailService;
-
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
-	}
-
-	@Bean
-	public CommandLineRunner runner() {
-		return args -> {
-			List<String> mail = List.of("liebldouglas@gmail.com");
-			emailService.sendMail("LIBRARY API SUCCESSFULLY STARTED!", mail);
-		};
 	}
 
 	public static void main(String[] args) {
