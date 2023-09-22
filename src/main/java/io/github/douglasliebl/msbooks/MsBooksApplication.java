@@ -28,9 +28,8 @@ public class MsBooksApplication {
 	@Bean
 	public CommandLineRunner runner() {
 		return args -> {
-			List<String> mail = List.of("douglasliebl@outlook.com");
-			emailService.sendMail("Testing", mail);
-			System.out.println("SUCCESSFULLY SEND");
+			List<String> mail = List.of("liebldouglas@gmail.com");
+			emailService.sendMail("LIBRARY API SUCCESSFULLY STARTED!", mail);
 		};
 	}
 

@@ -20,22 +20,22 @@ spring:
     password: root
 
   mail:
-    host: smtp.gmail.com
+    host: smtp-mail.outlook.com
     port: 587
-    username:
-    password:
+    username: librarytestapi@outlook.com # Do not use this email for another reasons.
+    password: JCeAUonGqymjru # I will know and remove it. This is just for study purposes only.
     properties:
       mail:
+        tls: true
         smtp:
           auth: true
           starttls:
             enable: true
-          socketFactory:
-            port: 465
-            class: javax.net.ssl.SSLSocketFactory
+          ssl:
+            trust: smtp-mail.outlook.com
 
 app:
   mail:
     late-loans:
       message: Attention! You have a book overdue. Please return it as soon as possible or request a new loan.
-    default-mailSender: tt893603@gmail.com
+    default-mailSender: librarytestapi@outlook.com
