@@ -22,8 +22,8 @@ spring:
   mail:
     host: smtp-mail.outlook.com
     port: 587
-    username: librarytestapi@outlook.com # Do not use this email for another reasons.
-    password: JCeAUonGqymjru # I will know and remove it. This is just for study purposes only.
+    username: # Insert your outlook email here
+    password: # Insert your email password
     properties:
       mail:
         tls: true
@@ -38,4 +38,4 @@ app:
   mail:
     late-loans:
       message: Attention! You have a book overdue. Please return it as soon as possible or request a new loan.
-    default-mailSender: librarytestapi@outlook.com
+    default-mailSender: # Insert the email who will send the mails
