@@ -4,6 +4,10 @@ jdk:
 dist: trusty
 before_install:
   - chmod +x mvnw
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart
+  - sleep 1
+  - postgres --version
 addons:
   postgresql: '13'
   apt:
@@ -12,7 +16,6 @@ addons:
 env:
   global:
     - PGUSER=postgres
-    - PGPASSWORD=root
     - PGPORT=5432
     - PGHOST=localhost
 script:
