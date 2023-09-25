@@ -1,16 +1,9 @@
 language: java
 jdk:
   - oraclejdk17
-dist: focal
+dist: trusty
 before_install:
   - chmod +x mvnw
-addons:
-  postgresql: 13
-  apt:
-    update: true
-    packages:
-      - postgresql-13
-      - postgresql-13-postgis-3
 services:
   - postgresql
 env:
