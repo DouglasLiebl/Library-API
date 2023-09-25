@@ -51,7 +51,7 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public List<Loan> getAllLateLoans() {
         LocalDate threeDaysAgo = LocalDate.now().minusDays(4);
-        return null;
+        return repository.findByLoanDateLessThanAndReturnedIsFalseOrReturnedIsNull(threeDaysAgo);
     }
 
 
