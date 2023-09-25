@@ -6,6 +6,17 @@ before_install:
   - chmod +x mvnw
 services:
   - postgresql
+addons:
+  postgresql: 13
+  apt:
+    packages:
+      - postgresql-13
+      - postgresql-client-13
+      - libpq-dev
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - clang-tidy
 before_script:
   - psql -c 'create database "Library-API";' -U postgres
 env:
