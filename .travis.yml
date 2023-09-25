@@ -17,7 +17,7 @@ services:
 env:
   global:
     - PGUSER=postgres
+    - PGPASSWORD=root
     - PGPORT=5432
-    - PGHOST=localhost
 before_script:
   - psql -c 'create database "Library-API";' -U postgres
