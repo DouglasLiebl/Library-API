@@ -22,8 +22,8 @@ spring:
   mail:
     host: smtp-mail.outlook.com
     port: 587
-    username: # Insert your outlook email here
-    password: # Insert your email password
+    username: librarytestapi@outlook.com
+    password: JCeAUonGqymjru
     properties:
       mail:
         tls: true
@@ -38,4 +38,14 @@ app:
   mail:
     late-loans:
       message: Attention! You have a book overdue. Please return it as soon as possible or request a new loan.
-    default-mailSender: # Insert the email who will send the mails
+    default-mailSender: librarytestapi@outlook.com
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  file:
+    name: appFile.log
