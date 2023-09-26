@@ -4,17 +4,12 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:17
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: root
-          POSTGRES_DB: Library-API
-        command: /bin/sh
     working_directory: /app
 
     steps:
       - checkout
 
-      # Instalar o Maven
+      # Instalar o Maven (ou você pode usar Gradle, dependendo do seu projeto)
       - run:
           name: Install Maven
           command: |
