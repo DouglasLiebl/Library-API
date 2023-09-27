@@ -18,7 +18,7 @@ git clone https://github.com/DouglasLiebl/Library-API.git
 
 2. Install dependencies with Maven
 
-3. (Optional) This project is using H2 database but you can change it. Install [PostgresSQL](https://www.postgresql.org/) and put those lines on application.yaml:
+3. (Optional) This project is using H2 database but you can change it. Install [PostgreSQL](https://www.postgresql.org/) and put those lines on application.yaml:
 ```bash
   jpa:
     database: postgresql
