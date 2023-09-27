@@ -1,1 +1,1 @@
-# Library-API [![Build Status](https://app.travis-ci.com/DouglasLiebl/Library-API.svg?branch=main)](https://app.travis-ci.com/github/DouglasLiebl/Library-API)
+# Library-API [![Build Status](https://app.travis-ci.com/DouglasLiebl/Library-API.svg?branch=main)](https://app.travis-ci.com/github/DouglasLiebl/Library-API) [![codecov](https://codecov.io/gh/DouglasLiebl/Library-API/graph/badge.svg?token=8XMRBH9EOM)](https://codecov.io/gh/DouglasLiebl/Library-API)
