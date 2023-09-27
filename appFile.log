@@ -1,136 +1,68 @@
-2023-09-26T12:55:46.402-03:00  INFO 6800 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : Starting BookRepositoryTest using Java 17.0.8 with PID 6800 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T12:55:46.407-03:00  INFO 6800 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : The following 1 profile is active: "test"
-2023-09-26T12:55:46.812-03:00  INFO 6800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-26T12:55:46.877-03:00  INFO 6800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 2 JPA repository interfaces.
-2023-09-26T12:55:47.199-03:00  INFO 6800 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-26T12:55:47.258-03:00  INFO 6800 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
-2023-09-26T12:55:47.260-03:00  INFO 6800 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-26T12:55:47.421-03:00  INFO 6800 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T12:55:47.544-03:00  INFO 6800 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-26T12:55:47.560-03:00  INFO 6800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-26T12:55:47.760-03:00  INFO 6800 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5403907
-2023-09-26T12:55:47.762-03:00  INFO 6800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-26T12:55:48.040-03:00  INFO 6800 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T12:55:48.593-03:00  INFO 6800 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-26T12:55:48.677-03:00  INFO 6800 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T12:55:49.090-03:00  INFO 6800 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : Started BookRepositoryTest in 3.062 seconds (process running for 4.043)
-2023-09-26T12:55:49.776-03:00  INFO 6800 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.model.repository.LoanRepositoryTest]: LoanRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T12:55:49.781-03:00  INFO 6800 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.api.model.repository.LoanRepositoryTest
-2023-09-26T12:55:49.909-03:00  INFO 6800 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.resource.BookControllerTest]: BookControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T12:55:49.929-03:00  INFO 6800 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.api.resource.BookControllerTest
-2023-09-26T12:55:49.969-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookControllerTest  : Starting BookControllerTest using Java 17.0.8 with PID 6800 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T12:55:49.970-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookControllerTest  : The following 1 profile is active: "test"
-2023-09-26T12:55:50.819-03:00  INFO 6800 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2023-09-26T12:55:50.819-03:00  INFO 6800 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2023-09-26T12:55:50.820-03:00  INFO 6800 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2023-09-26T12:55:50.832-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookControllerTest  : Started BookControllerTest in 0.892 seconds (process running for 5.785)
-2023-09-26T12:55:50.910-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : deleting book with id: 1
-2023-09-26T12:55:51.157-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : creating a book for isbn: 123456
-2023-09-26T12:55:51.166-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : updating book with id: 11
-2023-09-26T12:55:51.176-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : creating a book for isbn: 123456
-2023-09-26T12:55:51.195-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : obtaining details for book id: 11
-2023-09-26T12:55:51.199-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : deleting book with id: 11
-2023-09-26T12:55:51.204-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : obtaining details for book id: 1
-2023-09-26T12:55:51.209-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.BookController      : updating book with id: 1
-2023-09-26T12:55:51.239-03:00  INFO 6800 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.resource.LoanControllerTest]: LoanControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T12:55:51.245-03:00  INFO 6800 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.api.resource.LoanControllerTest
-2023-09-26T12:55:51.277-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.LoanControllerTest  : Starting LoanControllerTest using Java 17.0.8 with PID 6800 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T12:55:51.277-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.LoanControllerTest  : The following 1 profile is active: "test"
-2023-09-26T12:55:51.473-03:00  INFO 6800 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2023-09-26T12:55:51.473-03:00  INFO 6800 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2023-09-26T12:55:51.474-03:00  INFO 6800 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2023-09-26T12:55:51.478-03:00  INFO 6800 --- [main] i.g.d.m.api.resource.LoanControllerTest  : Started LoanControllerTest in 0.229 seconds (process running for 6.43)
-2023-09-26T12:55:51.537-03:00  INFO 6800 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.service.BookServiceTest]: BookServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T12:55:51.687-03:00  INFO 6800 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.service.LoanServiceTest]: LoanServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T12:55:51.779-03:00  INFO 6800 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.MsBooksApplicationTests]: MsBooksApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T12:55:51.786-03:00  INFO 6800 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.MsBooksApplicationTests
-2023-09-26T12:55:51.811-03:00  INFO 6800 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : Starting MsBooksApplicationTests using Java 17.0.8 with PID 6800 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T12:55:51.811-03:00  INFO 6800 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2023-09-26T12:55:52.338-03:00  INFO 6800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-26T12:55:52.349-03:00  INFO 6800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 2 JPA repository interfaces.
-2023-09-26T12:55:52.463-03:00  INFO 6800 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-26T12:55:52.468-03:00  INFO 6800 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T12:55:52.468-03:00  INFO 6800 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-26T12:55:52.469-03:00  INFO 6800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2023-09-26T12:55:52.511-03:00  INFO 6800 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@2290186e
-2023-09-26T12:55:52.512-03:00  INFO 6800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2023-09-26T12:55:52.525-03:00  INFO 6800 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T12:55:52.553-03:00  INFO 6800 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-26T12:55:52.582-03:00  INFO 6800 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T12:55:52.847-03:00  WARN 6800 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-26T12:55:53.207-03:00  INFO 6800 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2023-09-26T12:55:53.265-03:00  INFO 6800 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : Started MsBooksApplicationTests in 1.473 seconds (process running for 8.217)
-2023-09-26T12:55:53.326-03:00  INFO 6800 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T12:55:53.328-03:00  INFO 6800 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-26T12:55:53.334-03:00  INFO 6800 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-26T12:55:53.340-03:00  INFO 6800 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T12:55:53.340-03:00  INFO 6800 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2023-09-26T12:55:53.343-03:00  INFO 6800 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2023-09-26T16:19:51.211-03:00  INFO 8520 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : Starting BookRepositoryTest using Java 17.0.8 with PID 8520 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T16:19:51.213-03:00  INFO 8520 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : The following 1 profile is active: "test"
-2023-09-26T16:19:51.598-03:00  INFO 8520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-26T16:19:51.667-03:00  INFO 8520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 2 JPA repository interfaces.
-2023-09-26T16:19:52.012-03:00  INFO 8520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-26T16:19:52.185-03:00  INFO 8520 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:714f3072-4279-438a-bd19-043f0e835d10 user=SA
-2023-09-26T16:19:52.187-03:00  INFO 8520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-26T16:19:52.223-03:00  INFO 8520 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-26T16:19:52.278-03:00  INFO 8520 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
-2023-09-26T16:19:52.280-03:00  INFO 8520 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-26T16:19:52.410-03:00  INFO 8520 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T16:19:52.538-03:00  INFO 8520 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-26T16:19:52.741-03:00  INFO 8520 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T16:19:53.326-03:00  INFO 8520 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-26T16:19:53.365-03:00  INFO 8520 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T16:19:53.830-03:00  INFO 8520 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : Started BookRepositoryTest in 2.97 seconds (process running for 3.955)
-2023-09-26T16:19:54.444-03:00  INFO 8520 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.model.repository.LoanRepositoryTest]: LoanRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T16:19:54.449-03:00  INFO 8520 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.api.model.repository.LoanRepositoryTest
-2023-09-26T16:19:54.561-03:00  INFO 8520 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.resource.BookControllerTest]: BookControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T16:19:54.587-03:00  INFO 8520 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.api.resource.BookControllerTest
-2023-09-26T16:19:54.638-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookControllerTest  : Starting BookControllerTest using Java 17.0.8 with PID 8520 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T16:19:54.638-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookControllerTest  : The following 1 profile is active: "test"
-2023-09-26T16:19:55.481-03:00  INFO 8520 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2023-09-26T16:19:55.482-03:00  INFO 8520 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2023-09-26T16:19:55.483-03:00  INFO 8520 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2023-09-26T16:19:55.497-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookControllerTest  : Started BookControllerTest in 0.9 seconds (process running for 5.622)
-2023-09-26T16:19:55.582-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : deleting book with id: 1
-2023-09-26T16:19:55.825-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : creating a book for isbn: 123456
-2023-09-26T16:19:55.834-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : updating book with id: 11
-2023-09-26T16:19:55.849-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : creating a book for isbn: 123456
-2023-09-26T16:19:55.875-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : obtaining details for book id: 11
-2023-09-26T16:19:55.880-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : deleting book with id: 11
-2023-09-26T16:19:55.886-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : obtaining details for book id: 1
-2023-09-26T16:19:55.894-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.BookController      : updating book with id: 1
-2023-09-26T16:19:55.921-03:00  INFO 8520 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.resource.LoanControllerTest]: LoanControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T16:19:55.927-03:00  INFO 8520 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.api.resource.LoanControllerTest
-2023-09-26T16:19:55.965-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.LoanControllerTest  : Starting LoanControllerTest using Java 17.0.8 with PID 8520 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T16:19:55.965-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.LoanControllerTest  : The following 1 profile is active: "test"
-2023-09-26T16:19:56.174-03:00  INFO 8520 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2023-09-26T16:19:56.174-03:00  INFO 8520 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2023-09-26T16:19:56.174-03:00  INFO 8520 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2023-09-26T16:19:56.178-03:00  INFO 8520 --- [main] i.g.d.m.api.resource.LoanControllerTest  : Started LoanControllerTest in 0.248 seconds (process running for 6.303)
-2023-09-26T16:19:56.240-03:00  INFO 8520 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.service.BookServiceTest]: BookServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T16:19:56.383-03:00  INFO 8520 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.api.service.LoanServiceTest]: LoanServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T16:19:56.466-03:00  INFO 8520 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.msbooks.MsBooksApplicationTests]: MsBooksApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-09-26T16:19:56.472-03:00  INFO 8520 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.msbooks.MsBooksApplication for test class io.github.douglasliebl.msbooks.MsBooksApplicationTests
-2023-09-26T16:19:56.498-03:00  INFO 8520 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : Starting MsBooksApplicationTests using Java 17.0.8 with PID 8520 (started by dougl in C:\Users\dougl\Library-API)
-2023-09-26T16:19:56.498-03:00  INFO 8520 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2023-09-26T16:19:56.986-03:00  INFO 8520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-26T16:19:57.007-03:00  INFO 8520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 2 JPA repository interfaces.
-2023-09-26T16:19:57.136-03:00  INFO 8520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2023-09-26T16:19:57.138-03:00  INFO 8520 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:53bec038-0a80-4a83-9e96-2a70fda100ca user=SA
-2023-09-26T16:19:57.138-03:00  INFO 8520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2023-09-26T16:19:57.139-03:00  INFO 8520 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-26T16:19:57.145-03:00  INFO 8520 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T16:19:57.145-03:00  INFO 8520 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-26T16:19:57.155-03:00  INFO 8520 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-26T16:19:57.185-03:00  INFO 8520 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-26T16:19:57.189-03:00  INFO 8520 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T16:19:57.461-03:00  WARN 8520 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-26T16:19:57.861-03:00  INFO 8520 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2023-09-26T16:19:57.914-03:00  INFO 8520 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : Started MsBooksApplicationTests in 1.436 seconds (process running for 8.038)
-2023-09-26T16:19:57.962-03:00  INFO 8520 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T16:19:57.967-03:00  INFO 8520 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-26T16:19:57.970-03:00  INFO 8520 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-26T16:19:57.974-03:00  INFO 8520 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-26T16:19:57.975-03:00  INFO 8520 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2023-09-26T16:19:57.975-03:00  INFO 8520 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-09-27T10:08:38.729-03:00  INFO 6108 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : Starting BookRepositoryTest using Java 17.0.8 with PID 6108 (started by dougl in C:\Users\dougl\Library-API)
+2023-09-27T10:08:38.735-03:00  INFO 6108 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : The following 1 profile is active: "test"
+2023-09-27T10:08:39.318-03:00  INFO 6108 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-27T10:08:39.413-03:00  INFO 6108 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 2 JPA repository interfaces.
+2023-09-27T10:08:39.866-03:00  INFO 6108 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-27T10:08:40.255-03:00  INFO 6108 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:223ca761-a999-4f43-90c5-9d4bc0e454da user=SA
+2023-09-27T10:08:40.257-03:00  INFO 6108 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-27T10:08:40.317-03:00  INFO 6108 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-27T10:08:40.410-03:00  INFO 6108 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-09-27T10:08:40.414-03:00  INFO 6108 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-27T10:08:40.657-03:00  INFO 6108 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-27T10:08:40.862-03:00  INFO 6108 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-27T10:08:41.285-03:00  INFO 6108 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-27T10:08:42.250-03:00  INFO 6108 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-27T10:08:42.315-03:00  INFO 6108 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-27T10:08:42.862-03:00  INFO 6108 --- [main] i.g.d.m.a.m.r.BookRepositoryTest         : Started BookRepositoryTest in 4.796 seconds (process running for 6.432)
+2023-09-27T10:08:43.693-03:00  INFO 6108 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.library.api.model.repository.LoanRepositoryTest]: LoanRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-09-27T10:08:43.700-03:00  INFO 6108 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.library.MsBooksApplication for test class io.github.douglasliebl.library.api.model.repository.LoanRepositoryTest
+2023-09-27T10:08:43.824-03:00  INFO 6108 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.library.api.resource.BookControllerTest]: BookControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-09-27T10:08:43.848-03:00  INFO 6108 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.library.MsBooksApplication for test class io.github.douglasliebl.library.api.resource.BookControllerTest
+2023-09-27T10:08:43.897-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookControllerTest  : Starting BookControllerTest using Java 17.0.8 with PID 6108 (started by dougl in C:\Users\dougl\Library-API)
+2023-09-27T10:08:43.898-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookControllerTest  : The following 1 profile is active: "test"
+2023-09-27T10:08:45.164-03:00  INFO 6108 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-09-27T10:08:45.165-03:00  INFO 6108 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-09-27T10:08:45.166-03:00  INFO 6108 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-09-27T10:08:45.189-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookControllerTest  : Started BookControllerTest in 1.326 seconds (process running for 8.76)
+2023-09-27T10:08:45.315-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : deleting book with id: 1
+2023-09-27T10:08:45.694-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : creating a book for isbn: 123456
+2023-09-27T10:08:45.707-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : updating book with id: 11
+2023-09-27T10:08:45.722-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : creating a book for isbn: 123456
+2023-09-27T10:08:45.749-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : obtaining details for book id: 11
+2023-09-27T10:08:45.756-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : deleting book with id: 11
+2023-09-27T10:08:45.763-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : obtaining details for book id: 1
+2023-09-27T10:08:45.770-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.BookController      : updating book with id: 1
+2023-09-27T10:08:45.802-03:00  INFO 6108 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.library.api.resource.LoanControllerTest]: LoanControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-09-27T10:08:45.807-03:00  INFO 6108 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.library.MsBooksApplication for test class io.github.douglasliebl.library.api.resource.LoanControllerTest
+2023-09-27T10:08:45.847-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.LoanControllerTest  : Starting LoanControllerTest using Java 17.0.8 with PID 6108 (started by dougl in C:\Users\dougl\Library-API)
+2023-09-27T10:08:45.849-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.LoanControllerTest  : The following 1 profile is active: "test"
+2023-09-27T10:08:46.087-03:00  INFO 6108 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-09-27T10:08:46.087-03:00  INFO 6108 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-09-27T10:08:46.087-03:00  INFO 6108 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2023-09-27T10:08:46.093-03:00  INFO 6108 --- [main] i.g.d.m.api.resource.LoanControllerTest  : Started LoanControllerTest in 0.28 seconds (process running for 9.663)
+2023-09-27T10:08:46.178-03:00  INFO 6108 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.library.api.service.BookServiceTest]: BookServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-09-27T10:08:46.375-03:00  INFO 6108 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.library.api.service.LoanServiceTest]: LoanServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-09-27T10:08:46.483-03:00  INFO 6108 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.github.douglasliebl.library.MsBooksApplicationTests]: MsBooksApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-09-27T10:08:46.489-03:00  INFO 6108 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.github.douglasliebl.library.MsBooksApplication for test class io.github.douglasliebl.library.MsBooksApplicationTests
+2023-09-27T10:08:46.517-03:00  INFO 6108 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : Starting MsBooksApplicationTests using Java 17.0.8 with PID 6108 (started by dougl in C:\Users\dougl\Library-API)
+2023-09-27T10:08:46.518-03:00  INFO 6108 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2023-09-27T10:08:47.239-03:00  INFO 6108 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-27T10:08:47.252-03:00  INFO 6108 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 2 JPA repository interfaces.
+2023-09-27T10:08:47.421-03:00  INFO 6108 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-09-27T10:08:47.424-03:00  INFO 6108 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:555e2b0f-b2a2-4c63-9d65-fe216566a759 user=SA
+2023-09-27T10:08:47.425-03:00  INFO 6108 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-09-27T10:08:47.429-03:00  INFO 6108 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-27T10:08:47.439-03:00  INFO 6108 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-27T10:08:47.440-03:00  INFO 6108 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-27T10:08:47.452-03:00  INFO 6108 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-27T10:08:47.499-03:00  INFO 6108 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-27T10:08:47.503-03:00  INFO 6108 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-27T10:08:47.883-03:00  WARN 6108 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-27T10:08:48.415-03:00  INFO 6108 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2023-09-27T10:08:48.494-03:00  INFO 6108 --- [main] i.g.d.msbooks.MsBooksApplicationTests    : Started MsBooksApplicationTests in 1.999 seconds (process running for 12.064)
+2023-09-27T10:08:48.557-03:00  INFO 6108 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-27T10:08:48.771-03:00  INFO 6108 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-27T10:08:48.773-03:00  INFO 6108 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-27T10:08:48.778-03:00  INFO 6108 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-27T10:08:48.780-03:00  INFO 6108 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-09-27T10:08:48.781-03:00  INFO 6108 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
