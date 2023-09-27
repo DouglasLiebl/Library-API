@@ -18,7 +18,7 @@ git clone https://github.com/DouglasLiebl/Library-API.git
 
 2. Install dependencies with Maven
 
-3. (Optional) Install [PostgresSQL](https://www.postgresql.org/) and put those lines on application.yaml:
+3. (Optional) This project is using H2 database but you can change it. Install [PostgresSQL](https://www.postgresql.org/) and put those lines on application.yaml:
 ```bash
   jpa:
     database: postgresql
@@ -37,4 +37,30 @@ git clone https://github.com/DouglasLiebl/Library-API.git
     username: # Your postgres username
     password: # Your postgres password
     driver-class-name: org.postgresql.Driver
+```
+
+## Usage
+
+1. Just start the application.
+2. (Using PostgreSQL) Make sure your PostgreSQL is running on your machine.
+
+## Usage with docker
+
+1. Open the command prompt in the project folder and type the commands bellow:
+```bash
+docker build -t preferred-name-for-image .
+```
+   then
+```bash
+docker run --name name-for-conteiner -p 8080:8080 image-name
+```
+
+2. If you wanna use PostgreSQL put this different part on your application.yaml:
+```bash
+ datasource:
+    url: jdbc:postgresql://postgresql:5432/library-api
+```
+  and type this command:
+```bash
+docker compose up --build
 ```
