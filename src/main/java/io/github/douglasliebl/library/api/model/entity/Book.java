@@ -1,14 +1,13 @@
 package io.github.douglasliebl.library.api.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,5 +24,6 @@ public class Book {
     private String isbn;
 
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Loan> loans;
 }

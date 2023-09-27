@@ -9,7 +9,7 @@ spring:
   #  show-sql: true
   #  properties:
   #    hibernate:
-  #      jdbc:
+  #     jdbc:
   #        lab:
   #          non_contextual_creation: true
   #  generate-ddl: true

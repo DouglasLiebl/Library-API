@@ -274,7 +274,7 @@ class BookControllerTest {
         BDDMockito.given(bookService.find(Mockito.any(Book.class), Mockito.any(Pageable.class)))
                 .willReturn(new PageImpl<Book>(Collections.singletonList(book), PageRequest.of(0, 100), 1));
 
-        String queryString = String.format("?title=t%s&author=%s&page=0&size=100", book.getTitle(), book.getAuthor());
+        String queryString = String.format("?author=%s&page=0&size=100", book.getAuthor());
 
         // when
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders

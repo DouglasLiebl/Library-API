@@ -59,26 +59,27 @@ public class LoanControllerTest {
         // given
         LoanDTO dto = LoanDTO.builder()
                 .isbn("123")
-                .customer("Customer").build();
+                .customer("Customer")
+                .email("customer@gmail.com").build();
         String json = new ObjectMapper().writeValueAsString(dto);
 
         Book book = Book.builder().id(11L)
                 .isbn("123").build();
+        BDDMockito.given(bookService.getBookByIsbn(book.getIsbn()))
+                .willReturn(Optional.of(book));
+
         Loan loan = Loan.builder().id(1L)
                 .customer("Customer")
                 .email("customer@gmail.com")
                 .book(book)
                 .loanDate(LocalDate.now()).build();
-
-        BDDMockito.given(bookService.getBookByIsbn("123"))
-                .willReturn(Optional.of(
-                Book.builder().isbn("123").build()));
         BDDMockito.given(loanService.save(Mockito.any(Loan.class)))
                 .willReturn(loan);
 
         // when
         MockHttpServletRequestBuilder requestBuilders = MockMvcRequestBuilders
                 .post(LOAN_API)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json);
 
@@ -149,9 +150,10 @@ public class LoanControllerTest {
         // given
         ReturnedLoanDTO dto = ReturnedLoanDTO.builder().returned(true).build();
         String json = new ObjectMapper().writeValueAsString(dto);
+        Loan loan = Loan.builder().id(1L).build();
 
         BDDMockito.given(loanService.getById(Mockito.anyLong()))
-                .willReturn(Optional.of(Loan.builder().id(1L).build()));
+                .willReturn(Optional.of(loan));
 
         // when
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
@@ -164,7 +166,7 @@ public class LoanControllerTest {
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk());
 
-        Mockito.verify(loanService, Mockito.times(1)).update(Loan.builder().id(1L).build());
+        Mockito.verify(loanService, Mockito.times(1)).update(loan);
     }
 
     @Test

@@ -50,7 +50,7 @@ public class LoanController {
                              @RequestBody ReturnedLoanDTO request) {
         Loan response = loanservice.getById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        response.setReturned(response.getReturned());
+        response.setReturned(request.getReturned());
         loanservice.update(response);
     }
 
@@ -61,6 +61,7 @@ public class LoanController {
                 .map(entity -> {
                     BookDTO book = mapper.map(entity.getBook(), BookDTO.class);
                     LoanDTO loan = mapper.map(entity, LoanDTO.class);
+                    loan.setIsbn(book.getIsbn());
                     loan.setBook(book);
                     return loan;
                 })

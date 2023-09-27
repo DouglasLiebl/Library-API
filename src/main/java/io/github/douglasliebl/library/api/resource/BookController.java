@@ -77,7 +77,7 @@ public class BookController {
         List<BookDTO> response = result
                 .stream()
                 .map(entity -> mapper.map(entity, BookDTO.class))
-                .toList();
+                .collect(Collectors.toList());
         PageImpl<BookDTO> pagedResponse = new PageImpl<>(response, pageRequest, result.getTotalElements());
 
         return ResponseEntity.status(HttpStatus.OK).body(pagedResponse);
