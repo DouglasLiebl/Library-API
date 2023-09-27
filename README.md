@@ -36,4 +36,5 @@ git clone https://github.com/DouglasLiebl/Library-API.git
     url: jdbc:postgresql://localhost:5432/ # Your database name
     username: # Your postgres username
     password: # Your postgres password
+    driver-class-name: org.postgresql.Driver
 ```
