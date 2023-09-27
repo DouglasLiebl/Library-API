@@ -2,28 +2,11 @@ spring:
   application:
     name: Library-API
 
-  #jpa:
-  #  database: postgresql
-  #  hibernate:
-  #   ddl-auto: update
-  #  show-sql: true
-  #  properties:
-  #    hibernate:
-  #     jdbc:
-  #        lab:
-  #          non_contextual_creation: true
-  #  generate-ddl: true
-
-  #datasource:
-  #  url: jdbc:postgresql://localhost:5432/Library-API
-  #  username: postgres
-  #  password: root
-
   mail:
     host: smtp-mail.outlook.com
     port: 587
-    username: librarytestapi@outlook.com
-    password: JCeAUonGqymjru
+    username: # Your email
+    password: # Your email password
     properties:
       mail:
         tls: true
@@ -38,7 +21,7 @@ app:
   mail:
     late-loans:
       message: Attention! You have a book overdue. Please return it as soon as possible or request a new loan.
-    default-mailSender: librarytestapi@outlook.com
+    default-mailSender: # Your email again
 
 management:
   endpoints:
