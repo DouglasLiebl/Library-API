@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Library-API
+    name: library-api
 
   mail:
     host: smtp-mail.outlook.com
